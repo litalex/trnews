@@ -27,3 +27,12 @@ $factory->define(App\Task::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\News::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->unique(),
+        'title' => $faker->title,
+        'text' => $faker->text,
+        'enabled' => $faker->boolean(),
+    ];
+});
+

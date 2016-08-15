@@ -24,9 +24,8 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->middleware('guest');
+    Route::get('/', 'NewsController@index')->middleware('guest');
+    Route::get('/news/{id}', 'NewsController@view')->middleware('guest');
 
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
