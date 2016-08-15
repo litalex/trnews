@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "litalex/trnews",
+    "description": "The demo project Laravel",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
