@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace Litalex;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class News extends Model
 {
@@ -12,7 +12,7 @@ class News extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['title', 'text', 'enabled'];
     
     /**
      * The attributes that should be cast to native types.
@@ -24,10 +24,20 @@ class News extends Model
     ];
 
     /**
-     * Get the user that owns the task.
+     * Get the user that owns the news.
      */
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getShortTextAttribute()
+    {
+        return substr($this->text, 1, 150);
+    }
+
+    public function getViewRouteAttribute()
+    {
+        return URL::route('view_news', $this->id);
     }
 }

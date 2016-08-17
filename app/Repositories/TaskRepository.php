@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace Litalex\Repositories;
 
-use App\User;
-use App\Task;
+use Litalex\User;
+use Litalex\Task;
 
 class TaskRepository
 {

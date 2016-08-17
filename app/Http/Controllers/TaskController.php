@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Litalex\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Litalex\Http\Requests;
+use Litalex\Http\Controllers\Controller;
 
-use App\Task;
-use App\Repositories\TaskRepository;
+use Litalex\Task;
+use Litalex\Repositories\TaskRepository;
 
 class TaskController extends Controller
 {

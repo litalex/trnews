@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(Litalex\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,
@@ -21,13 +21,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Task::class, function (Faker\Generator $faker) {
+$factory->define(Litalex\Task::class, function (Faker\Generator $faker) {
     return [
         'name' => str_random(10),
     ];
 });
 
-$factory->define(App\News::class, function (Faker\Generator $faker) {
+$factory->define(Litalex\News::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique(),
         'title' => $faker->title,

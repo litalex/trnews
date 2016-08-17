@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace Litalex\Jobs;
 
 use Illuminate\Bus\Queueable;
 

@@ -65,7 +65,8 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
+    'locales' => ['en', 'ru'],
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +79,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -151,10 +152,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Litalex\Providers\AppServiceProvider::class,
+        Litalex\Providers\AuthServiceProvider::class,
+        Litalex\Providers\EventServiceProvider::class,
+        Litalex\Providers\RouteServiceProvider::class,
 
     ],
 
