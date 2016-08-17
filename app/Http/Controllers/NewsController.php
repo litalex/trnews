@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Litalex\Http\Controllers;
 
-use App\News;
+use Litalex\Repositories\NewsRepository;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use Litalex\Http\Requests;
 
 class NewsController extends Controller
 {
     /**
      * The task repository instance.
      *
-     * @var News
+     * @var NewsRepository
      */
     protected $news;
 
     /**
      * Create a new controller instance.
      *
-     * @param News $news
+     * @param NewsRepository $news
      */
-    public function __construct(News $news)
+    public function __construct(NewsRepository $news)
     {
         $this->news = $news;
     }
@@ -34,15 +33,17 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
+        $news = $this->news->getAllEnabled();
+
         return view('news.index', [
-            'news' => $this->news->all(),
+            'news' => $news,
         ]);
     }
 
     public function view($id)
     {
         return view('news.view', [
-            'news' => News::find($id),
+            'news' => $this->news->getOneEnabledById($id),
         ]);
     }
 }
