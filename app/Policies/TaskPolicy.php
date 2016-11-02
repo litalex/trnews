@@ -2,8 +2,8 @@
 
 namespace Litalex\Policies;
 
-use Litalex\User;
-use Litalex\Task;
+use Litalex\Models\User;
+use Litalex\Models\Task;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TaskPolicy

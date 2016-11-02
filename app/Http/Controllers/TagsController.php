@@ -3,53 +3,53 @@
 namespace Litalex\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Litalex\Repositories\NewsRepository;
 use Illuminate\Http\Request;
+use Litalex\Repositories\TagsRepository;
 
-class NewsController extends Controller
+class TagsController extends Controller
 {
     /**
      * The news repository instance.
      *
-     * @var NewsRepository
+     * @var TagsRepository
      */
-    protected $news;
+    protected $tags;
 
     /**
      * Create a new controller instance.
      *
-     * @param NewsRepository $news
+     * @param TagsRepository $tags
      */
-    public function __construct(NewsRepository $news)
+    public function __construct(TagsRepository $tags)
     {
-        $this->news = $news;
+        $this->tags = $tags;
     }
 
     /**
-     * Display a list of all of the news.
+     * Display a list of all of the tags with it news.
      *
      * @param  Request  $request
      * @return Response
      */
     public function index(Request $request)
     {
-        $news = $this->news->getAllEnabledWithTags();
+        $tags = $this->tags->getAllEnabledWithNews();
 
-        return view('news.index', [
-            'news' => $news,
+        return view('tags.index', [
+            'tags' => $tags,
         ]);
     }
 
     /**
-     * Display one news.
+     * Display one tag with it news.
      *
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function view($slug)
     {
-        return view('news.view', [
-            'news' => $this->news->getOneEnabledBySlugWithTags($slug),
+        return view('tags.view', [
+            'tags' => $this->tags->getOneEnabledBySlugWithTags($slug),
         ]);
     }
 }

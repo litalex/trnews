@@ -20,10 +20,12 @@ class NewsTableSeeder extends Seeder
             DB::table('news')->insert(
                 [
                     'name'       => $faker->unique()->word,
+                    'user_id'    => 1,
                     'title'      => $faker->words(3, true),
                     'text'       => $faker->text(1000),
+                    'slug'       => $faker->slug,
                     'enabled'    => $faker->boolean(true),
-                    'created_at' => $faker->dateTime->getTimestamp(),
+                    'created_at' => $faker->date(),
                     'updated_at' => $faker->date(),
                 ]
             );

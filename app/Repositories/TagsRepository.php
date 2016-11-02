@@ -3,45 +3,23 @@
 namespace Litalex\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
-use Litalex\Models\News;
 use Litalex\Models\Tags;
 
 /**
- * Class NewsRepository
+ * Class TagsRepository
  *
  * @package Litalex\Repositories
  */
-class NewsRepository
+class TagsRepository
 {
-    /**
-     * The Tag instance.
-     *
-     * @var News
-     */
-    protected $tag;
-
     /**
      * NewsRepository constructor.
      *
-     * @param News $news
      * @param Tags $tag
      */
-    public function __construct(News $news, Tags $tag)
+    public function __construct(Tags $tag)
     {
-        $this->model = $news;
-        $this->tag = $tag;
-    }
-
-    /**
-     * Get all enabled news with tags.
-     *
-     * @return Collection
-     */
-    public function getAllEnabledWithTags()
-    {
-        return $this->findByEnabled()
-            ->with('tags')
-            ->get();
+        $this->model = $tag;
     }
 
     /**
@@ -52,7 +30,18 @@ class NewsRepository
     public function getAll()
     {
         return $this->model
-            ->with('tags')
+            ->get();
+    }
+
+    /**
+     * Get all enabled news with tags.
+     *
+     * @return Collection
+     */
+    public function getAllEnabledWithNews()
+    {
+        return $this->findByEnabled()
+            ->with('news')
             ->get();
     }
 
@@ -66,7 +55,7 @@ class NewsRepository
     {
         return $this->findByEnabled()
             ->whereSlug($slug)
-            ->with('tags')
+            ->with('news')
             ->first();
     }
 

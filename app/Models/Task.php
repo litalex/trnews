@@ -1,8 +1,8 @@
 <?php
 
-namespace Litalex;
+namespace Litalex\Models;
 
-use Litalex\User;
+use Litalex\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model

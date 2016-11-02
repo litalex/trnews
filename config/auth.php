@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Litalex\User::class,
+            'model' => Litalex\Models\User::class,
         ],
 
         // 'users' => [

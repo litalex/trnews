@@ -2,8 +2,8 @@
 
 namespace Litalex\Repositories;
 
-use Litalex\User;
-use Litalex\Task;
+use Litalex\Models\User;
+use Litalex\Models\Task;
 
 class TaskRepository
 {

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Litalex\Http\Requests;
 use Litalex\Http\Controllers\Controller;
 
-use Litalex\Task;
+use Litalex\Models\Task;
 use Litalex\Repositories\TaskRepository;
 
 class TaskController extends Controller

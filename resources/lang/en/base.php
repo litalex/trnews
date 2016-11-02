@@ -13,11 +13,12 @@ return [
     |
     */
 
-    'news' => 'New',
+    'news' => 'News',
     'read_more' => 'Read more',
     'home' => 'Home',
     'login' => 'Login',
     'register' => 'Register',
     'logout' => 'Logout',
+    'tags' => 'Tags',
 
 ];

@@ -13,12 +13,6 @@ return [
     |
     */
 
-    'news' => 'Новости',
-    'read_more' => 'Подробнее',
-    'home' => 'Главная',
-    'login' => 'Войти',
-    'register' => 'Зарегистрироваться',
-    'logout' => 'Выйти',
-    'tags' => 'Теги',
+    'admin_panel' => 'Admin Panel',
 
 ];

@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Litalex\Task' => 'Litalex\Policies\TaskPolicy',
+        'Litalex\Models\Task' => 'Litalex\Policies\TaskPolicy',
     ];
 
     /**

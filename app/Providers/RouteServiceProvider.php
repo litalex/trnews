@@ -8,6 +8,11 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 
+/**
+ * Class RouteServiceProvider
+ *
+ * @package Litalex\Providers
+ */
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -22,14 +27,11 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router $router
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
-        //
-
-        parent::boot($router);
+        parent::boot();
     }
 
     /**

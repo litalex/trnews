@@ -1,6 +1,6 @@
 <?php
 
-namespace Litalex;
+namespace Litalex\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
