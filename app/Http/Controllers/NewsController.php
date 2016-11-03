@@ -29,6 +29,7 @@ class NewsController extends Controller
      * Display a list of all of the news.
      *
      * @param  Request  $request
+     *
      * @return Response
      */
     public function index(Request $request)
@@ -44,6 +45,7 @@ class NewsController extends Controller
      * Display one news.
      *
      * @param $slug
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function view($slug)
