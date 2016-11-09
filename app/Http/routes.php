@@ -24,7 +24,8 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', 'NewsController@index')->middleware('guest')->name('news_index');
+    Route::get('/', 'IndexController@index')->middleware('guest')->name('index_index');
+    Route::get('/news', 'NewsController@index')->middleware('guest')->name('news_index');
     Route::get('/tags', 'TagsController@index')->middleware('guest')->name('tags_index');
     Route::get('/news/{slug}', 'NewsController@view')->middleware('guest')->name('view_news');
     Route::get('/tags/{slug}', 'TagsController@view')->middleware('guest')->name('view_tag');

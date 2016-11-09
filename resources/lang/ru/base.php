@@ -20,5 +20,9 @@ return [
     'register' => 'Зарегистрироваться',
     'logout' => 'Выйти',
     'tags' => 'Теги',
+    'trainers' => 'Инструкторы',
+    'cars' => 'Автомобили',
+    'driverExperience' => 'Водительский опыт',
+    'trainerExperience' => 'Опыт иструктора',
 
 ];
