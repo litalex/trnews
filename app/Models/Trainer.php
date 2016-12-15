@@ -20,7 +20,7 @@ class Trainer extends Model
      */
     public function city()
     {
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
     /**
@@ -44,9 +44,9 @@ class Trainer extends Model
      *
      * @return string
      */
-    public function getShortTextAttribute()
+    public function getShortAboutMeAttribute()
     {
-        return substr($this->text, 1, 150);
+        return substr($this->aboutMe, 1, 100);
     }
 
     /**
@@ -56,7 +56,7 @@ class Trainer extends Model
      */
     public function getViewRouteAttribute()
     {
-        return URL::route('view_route', $this->slug);
+        return URL::route('view_trainer', $this->slug);
     }
 
     /**
@@ -68,11 +68,82 @@ class Trainer extends Model
     public function setSlugAttribute($slug)
     {
         if (empty($slug)) {
-            $slug = str_replace(' ', '-', $this->title);
+            $slug = str_replace(' ', '-', strtolower($this->name));
         }
 
         $this->slug = $slug;
 
         return $this;
+    }
+
+    public function scopeOfGender($query, $gender)
+    {
+        if (!empty($gender)) {
+            return $query->whereGender($gender);
+        }
+    }
+
+    public function scopeOfStudentCar($query, $studentCar)
+    {
+        if (!empty($studentCar)) {
+            return $query->where('StudentCar', '=', $studentCar);
+        }
+    }
+
+    public function scopeOfTrainerExperience($query, $minTrainerExperience, $maxTrainerExperience)
+    {
+        return $query->whereBetween('trainerExperience', [(int)$minTrainerExperience, (int)$maxTrainerExperience]);
+    }
+
+    public function scopeOfPayByHour($query, $minPayByHour, $maxPayByHour)
+    {
+        return $query->whereBetween('payByHour', [(float)$minPayByHour, (float)$maxPayByHour]);
+    }
+
+    public function scopeOfPayByDistance($query, $minPayByDistance, $maxPayByDistance)
+    {
+        return $query->whereBetween('payByDistance', [(float)$minPayByDistance, (float)$maxPayByDistance]);
+    }
+
+    public function scopeOfCarBrand($query, $brand)
+    {
+        if (!empty($brand)) {
+            return $query->with('cars')
+                ->whereHas(
+                    'cars',
+                    function ($query) use ($brand) {
+                        $query
+                            ->ofBrand($brand);
+                    }
+                );
+        }
+    }
+
+    public function scopeOfCarTransmission($query, $transmission)
+    {
+        if (!empty($transmission)) {
+            return $query->with('cars')
+                ->whereHas(
+                    'cars',
+                    function ($query) use ($transmission) {
+                        $query
+                            ->ofTransmission($transmission);
+                    }
+                );
+        }
+    }
+
+    public function scopeOfCity($query, $city)
+    {
+        if (!empty($city)) {
+            return $query->with('city')
+                ->whereHas(
+                    'city',
+                    function ($query) use ($city) {
+                        $query
+                            ->ofId($city);
+                    }
+                );
+        }
     }
 }

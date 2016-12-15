@@ -7,23 +7,23 @@ use Litalex\Interfaces\CrudControllerInterface;
 use Litalex\Repositories\TrainerRepository;
 use Symfony\Component\HttpFoundation\Request;
 
-class IndexController extends Controller implements CrudControllerInterface
+class CarController extends Controller implements CrudControllerInterface
 {
     /**
      * The news repository instance.
      *
      * @var TrainerRepository
      */
-    protected $trainer;
+    protected $car;
 
     /**
      * Create a new controller instance.
      *
-     * @param TrainerRepository $trainer
+     * @param CarRepository $car
      */
-    public function __construct(TrainerRepository $trainer)
+    public function __construct(CarRepository $car)
     {
-        $this->trainer = $trainer;
+        $this->car = $car;
     }
 
     /**
@@ -35,9 +35,9 @@ class IndexController extends Controller implements CrudControllerInterface
      */
     public function index(Request $request)
     {
-        $trainers = $this->trainer->getAllEnabledWithCars();
+        $trainers = $this->car->getAllEnabledWithCars();
 
-        return view('index.index', [
+        return view('car.index', [
             'trainers' => $trainers,
         ]);
     }
@@ -61,8 +61,8 @@ class IndexController extends Controller implements CrudControllerInterface
      */
     public function view($slug)
     {
-        return view('trainer.view', [
-            'trainer' => $this->trainer->getOneEnabledBySlugWithTags($slug),
+        return view('car.view', [
+            'trainer' => $this->car->getOneEnabledBySlugWithCars($slug),
         ]);
     }
 }

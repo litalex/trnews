@@ -16,22 +16,25 @@ class TrainerTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 100) as $index) {
             DB::table('trainers')->insert(
                 [
-                    'name'              => $faker->title,
+                    'name'              => $faker->name,
+                    'slug'              => $faker->slug,
                     'firstName'         => $faker->firstName,
                     'lastName'          => $faker->lastName,
-                    'middleName'        => $faker->firstName,
-                    'driverExperience'  => $faker->randomNumber(),
-                    'trainerExperience' => $faker->randomNumber(),
+                    'driverExperience'  => random_int(4, 40),
+                    'trainerExperience' => random_int(1, 40),
                     'site'              => $faker->domainName,
-                    'area'              => $faker->text,
                     'aboutMe'           => $faker->text,
-                    'photo'             => $faker->imageUrl(),
+                    'photo'             => $faker->imageUrl("320", "320", 'people'),
                     'phoneNumber'       => $faker->randomNumber(),
-                    '   enabled'           => $faker->boolean(),
-                    'city_id'           => $index,
+                    'enabled'           => 1,
+                    'payByHour'         => random_int(100, 300),
+                    'payByDistance'     => random_int(1, 9),
+                    'gender'            => 'male',
+                    'studentCar'        => random_int(0, 1),
+                    'city_id'           => random_int(1, 10),
                     'user_id'           => $index,
                 ]
             );

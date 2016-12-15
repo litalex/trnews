@@ -21,10 +21,8 @@ trait MenuGenerator
     {
         return Menu::new()
             ->addClass('nav navbar-nav')
-            ->action('NewsController@index', Lang::get('base.news'))
-            ->action('TagsController@index', Lang::get('base.tags'))
-            ->action('TaskController@index', Lang::get('base.task'))
-            ->wrap('div.collapse.navbar-collapse')
+            ->action('NewsController@index', Lang::get('base.news'))->addItemParentClass('nav-item')->addItemClass('nav-link')
+            ->action('TagsController@index', Lang::get('base.tags'))->addItemParentClass('nav-item')->addItemClass('nav-link')
             ->setActiveFromRequest();
     }
 }

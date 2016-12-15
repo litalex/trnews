@@ -61,7 +61,7 @@ $factory->define(Litalex\Models\Car::class, function (Faker\Generator $faker) {
         'transmission' => $faker->boolean(),
         'photo' => $faker->imageUrl(),
         'payByHour' => $faker->randomNumber(),
-        'otherPay' => $faker->text,
+        'payByDistance' => $faker->text,
         'aboutCar' => $faker->text,
         'trainer_id' => $faker->randomNumber(),
         'enabled' => $faker->boolean(),

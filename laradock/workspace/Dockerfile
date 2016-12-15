@@ -75,7 +75,8 @@ ARG PUID=1000
 ARG PGID=1000
 RUN groupadd -g $PGID laradock && \
     useradd -u $PUID -g laradock -m laradock
-    
+RUN useradd --shell /bin/bash alexandrl -g laradock
+
 #####################################
 # Composer:
 #####################################
@@ -126,6 +127,20 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
     echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc && \
     echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.bashrc \
 ;fi
+
+# Install nodejs and dependencies
+USER root
+RUN apt-get -yqq update && \
+    apt-get install -y -qq git curl wget && \
+    apt-get -yqq install nodejs-legacy && \
+    apt-get -yqq install libnotify-bin && \
+    apt-get -yqq install npm && \
+    npm install --save-dev && \
+    npm install --global bower && \
+    npm cache clean && \
+    apt-get -yqq autoremove && \
+    apt-get -yqq clean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/* /tmp/* /var/tmp/*
 
 #
 #--------------------------------------------------------------------------

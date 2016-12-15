@@ -15,18 +15,21 @@ class Trainer extends Migration
     {
         Schema::create('trainers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('middleName');
             $table->integer('driverExperience');
             $table->integer('trainerExperience');
             $table->string('site');
-            $table->text('area');
             $table->text('aboutMe');
             $table->string('photo');
             $table->integer('phoneNumber');
+            $table->integer('payByHour');
+            $table->text('payByDistance');
             $table->boolean('enabled');
+            $table->boolean('studentCar');
+            $table->string('gender');
             $table->integer('city_id')->index();
             $table->integer('user_id')->index();
         });

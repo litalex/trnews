@@ -15,16 +15,15 @@ class Car extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('brand');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->string('model');
             $table->integer('year');
             $table->string('transmission');
             $table->string('photo');
-            $table->integer('payByHour');
-            $table->text('otherPay');
             $table->text('aboutCar');
             $table->boolean('enabled');
+            $table->string('brand_id')->index();
             $table->integer('trainer_id')->index();
         });
     }

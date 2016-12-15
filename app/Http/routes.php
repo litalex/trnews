@@ -24,7 +24,11 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', 'IndexController@index')->middleware('guest')->name('index_index');
+    Route::get('/', 'TrainerController@index')->middleware('guest')->name('index_trainer');
+    Route::get('/trainer/search', 'TrainerController@search')->middleware('guest')->name('search_trainer');
+    Route::get('/trainer/{slug}', 'TrainerController@view')->middleware('guest')->name('view_trainer');
+    Route::get('/trainers/search', 'TrainerController@search')->middleware('guest')->name('search_trainers');
+    Route::get('/car/{slug}', 'CarsController@view')->middleware('guest')->name('view_car');
     Route::get('/news', 'NewsController@index')->middleware('guest')->name('news_index');
     Route::get('/tags', 'TagsController@index')->middleware('guest')->name('tags_index');
     Route::get('/news/{slug}', 'NewsController@view')->middleware('guest')->name('view_news');
@@ -42,5 +46,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/task', 'TaskController@store');
     Route::delete('/task/{task}', 'TaskController@destroy');
 
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::auth();
 });

@@ -33,6 +33,17 @@ class TrainerRepository
         $this->tag = $tag;
     }
 
+    public function search($params)
+    {
+        $query = $this->findByEnabled()->with('cars');
+
+        foreach ($params as $name => $param) {
+            $query->andWhere($name = $param);
+        }
+
+        $query->get();
+    }
+
     /**
      * Get all enabled news with tags.
      *
@@ -53,7 +64,7 @@ class TrainerRepository
     public function getAll()
     {
         return $this->model
-            ->with('tags')
+            ->with('cars')
             ->get();
     }
 
@@ -63,11 +74,11 @@ class TrainerRepository
      * @param $slug
      * @return mixed
      */
-    public function getOneEnabledBySlugWithTags($slug)
+    public function getOneEnabledBySlugWithCars($slug)
     {
         return $this->findByEnabled()
             ->whereSlug($slug)
-            ->with('tags')
+            ->with('cars')
             ->first();
     }
 

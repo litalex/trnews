@@ -1,4 +1,5 @@
 var elixir = require('laravel-elixir');
+var gulp = require('gulp');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +13,19 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.sass('main.scss');
+});
+
+elixir(function(mix) {
+    mix.styles([
+        '../../../bower_components/font-awesome/css/font-awesome.css',
+        '../../../bower_components/bootstrap/dist/css/bootstrap.css'
+    ], 'public/css/app.css');
+});
+
+elixir(function(mix) {
+    mix.scripts([
+        '../../../bower_components/jquery/dist/jquery.js',
+        '../../../bower_components/bootstrap/dist/js/bootstrap.js'
+    ], 'public/js/app.js');
 });
