@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,19 +18,8 @@ class UsersTableSeeder extends Seeder
                 'password'   => bcrypt('Standart1'),
                 'created_at' => date_create(),
                 'updated_at' => date_create(),
+                'role_id'    => 1,
             ]
         );
-        $faker = Faker::create();
-        foreach (range(2, 10) as $index) {
-            DB::table('users')->insert(
-                [
-                    'name'       => $faker->userName,
-                    'email'      => $faker->email,
-                    'password'   => bcrypt($faker->password),
-                    'created_at' => date_create(),
-                    'updated_at' => date_create(),
-                ]
-            );
-        }
     }
 }

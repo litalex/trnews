@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\URL;
 
 class News extends Model
 {
+    const NEWS_PER_PAGE = 20;
+    const NEWS_PER_NEWS_LIST = 40;
+
     /**
      * Get the user that owns the news.
      */
@@ -21,6 +24,11 @@ class News extends Model
     public function tags()
     {
         return $this->belongsToMany(Tags::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     /**
@@ -40,23 +48,18 @@ class News extends Model
      */
     public function getViewRouteAttribute()
     {
-        return URL::route('view_news', $this->slug);
+        return URL::route('view_news', $this->name);
     }
 
-    /**
-     * Set slug
-     *
-     * @param $slug
-     * @return $this
-     */
-    public function setSlugAttribute($slug)
+    public function scopeOfTagIds($query, $ids)
     {
-        if (empty($slug)) {
-            $slug = str_replace(' ', '-', $this->title);
-        }
-
-        $this->slug = $slug;
-
-        return $this;
+        return $query->with('tags')
+            ->whereHas(
+                'tags',
+                function ($query) use ($ids) {
+                    $query
+                        ->ofIds($ids);
+                }
+            );
     }
 }

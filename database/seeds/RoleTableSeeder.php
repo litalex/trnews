@@ -16,6 +16,13 @@ class RoleTableSeeder extends Seeder
     {
         DB::table('roles')->insert(
             [
+                'id'    => 1,
+                'name'  => 'admin',
+                'title' => 'Admin',
+            ]
+        );
+        DB::table('roles')->insert(
+            [
                 'name'  => 'trainer',
                 'title' => 'Trainer',
             ]
@@ -24,6 +31,12 @@ class RoleTableSeeder extends Seeder
             [
                 'name'  => 'user',
                 'title' => 'User',
+            ]
+        );
+        DB::table('roles')->insert(
+            [
+                'name'  => 'author',
+                'title' => 'Author',
             ]
         );
     }

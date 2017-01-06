@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="container">
+        <div class="col-lg-12">
         @if (count($tags) > 0)
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1>{{ trans('base.news') }}</h1>
+                    <h1>{{ trans('base.tags') }}</h1>
                 </div>
                 <div class="panel-body">
                     @foreach ($tags as $item)
@@ -19,5 +20,6 @@
                 </div>
             </div>
         @endif
+        </div>
     </div>
 @endsection
