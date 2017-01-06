@@ -24,15 +24,33 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', 'TrainerController@index')->middleware('guest')->name('index_trainer');
+    Route::get('/', 'IndexController@index')->middleware('guest')->name('index');
+
+    /**
+     * Auto
+     */
     Route::get('/trainer/search', 'TrainerController@search')->middleware('guest')->name('search_trainer');
     Route::get('/trainer/{slug}', 'TrainerController@view')->middleware('guest')->name('view_trainer');
     Route::get('/trainers/search', 'TrainerController@search')->middleware('guest')->name('search_trainers');
     Route::get('/car/{slug}', 'CarsController@view')->middleware('guest')->name('view_car');
-    Route::get('/news', 'NewsController@index')->middleware('guest')->name('news_index');
     Route::get('/tags', 'TagsController@index')->middleware('guest')->name('tags_index');
-    Route::get('/news/{slug}', 'NewsController@view')->middleware('guest')->name('view_news');
     Route::get('/tags/{slug}', 'TagsController@view')->middleware('guest')->name('view_tag');
+
+    /**
+     * News
+     */
+    Route::get('/news', 'NewsController@index')->middleware('guest')->name('news_index');
+    Route::get('/news/{slug}', 'NewsController@view')->middleware('guest')->name('view_news');
+
+    /**
+     * Users
+     */
+    Route::get('/user/profile', 'UserController@profile')->middleware('auth')->name('user_profile');
+
+    /**
+     * Parsers
+     */
+    Route::get('/parse/get-news', 'NewsController@getNews')->middleware('guest')->name('news_get');
 
     /**
      * Admin panel
@@ -42,10 +60,23 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/tags', 'AdminController@view')->middleware('auth')->name('admin_tags');
     Route::get('/admin/news/save', 'AdminController@store')->middleware('auth')->name('admin_save');
 
-    Route::get('/tasks', 'TaskController@index');
-    Route::post('/task', 'TaskController@store');
-    Route::delete('/task/{task}', 'TaskController@destroy');
+    /**
+     * Articles
+     */
+    Route::post('/article/', 'ArticlesController@store')->middleware('auth')->name('article_store');
+    Route::post('/article/{slug}', 'ArticlesController@store')->middleware('auth')->name('article_from');
 
+    Route::post('/comment/', 'CommentsController@store')->middleware('auth')->name('store_comment');
+    /**
+     * Tasks
+     */
+//    Route::get('/tasks', 'TaskController@index');
+//    Route::post('/task', 'TaskController@store');
+//    Route::delete('/task/{task}', 'TaskController@destroy');
+
+    /**
+     * Auth
+     */
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::auth();
 });

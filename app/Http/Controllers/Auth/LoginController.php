@@ -3,7 +3,10 @@
 namespace Litalex\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use Litalex\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends Controller
 {
@@ -25,13 +28,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cabinet';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
      */
     public function __construct()
     {
+        $this->redirectTo = URL::previous() != url('login') ? URL::previous() : '/';
         $this->middleware('guest', ['except' => 'logout']);
     }
 }

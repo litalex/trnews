@@ -15,20 +15,6 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
-            DB::table('news')->insert(
-                [
-                    'name'       => $faker->unique()->word,
-                    'user_id'    => 1,
-                    'title'      => $faker->words(3, true),
-                    'text'       => $faker->text(1000),
-                    'slug'       => $faker->slug,
-                    'enabled'    => $faker->boolean(true),
-                    'created_at' => $faker->date(),
-                    'updated_at' => $faker->date(),
-                ]
-            );
-        }
+        \Illuminate\Support\Facades\Artisan::call('parse:news');
     }
 }

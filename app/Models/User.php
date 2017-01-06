@@ -33,6 +33,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all of the news for the user.
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
      * Get trainer info if user is trainer
      */
     public function trainer()
