@@ -20,5 +20,7 @@ return [
     'register' => 'Register',
     'logout' => 'Logout',
     'tags' => 'Tags',
+    'trainers' => 'Instructors',
+    'cars' => 'Cars',
 
 ];

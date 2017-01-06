@@ -1,0 +1,125 @@
+.header {
+  margin-bottom: 70px;
+}
+
+div.choice {
+  font-size: 20px;
+}
+
+/* Pagination styling */
+
+.pagination {
+  display: inline-block;
+  padding-right: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+  float: right;
+}
+
+.pagination > li {
+  display: inline
+}
+
+.pagination > li {
+  padding: 5px 8px;
+}
+
+.pagination > li.active {
+  z-index: 2;
+  color: #fff;
+  cursor: default;
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+
+.navbar-inverse {
+  background-color: #4186ff;
+  border-color: #4186ff;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #186cff;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #fff;
+  background-color: #2977ff;
+}
+
+.panel-default {
+  border-color: #b6cef9;
+}
+
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #c8ffe1;
+  border-color: #b6cef9;
+}
+
+h4 {
+  font-size: 1.3em;
+  color: #5a81c3;
+}
+
+h3 {
+  color: #5a81c3;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #4186ff;
+  border-color: #b7b7b7;
+}
+
+.btn {
+  border-radius: 20px;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0057ef;
+  border-color: #7b7b7b;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  cursor: default;
+  background-color: #4186ff;
+  border-color: #486986;
+}
+
+legend {
+  font-size: 16px;
+  color: #848484;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.semi-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.panel-default > .panel-heading {
+  color: #5a81c3;
+  text-align: center;
+}
+
+.panel-heading > h1 {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.badge {
+  background-color: #ff8e8e;
+}

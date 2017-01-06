@@ -20,5 +20,48 @@ return [
     'register' => 'Зарегистрироваться',
     'logout' => 'Выйти',
     'tags' => 'Теги',
+    'trainers' => 'Инструкторы',
+    'cars' => 'Авто',
+    'driverExperience' => 'Опыт водителя',
+    'trainerExperience' => 'Опыт инструктора',
+    'phoneNumber' => 'Номер телефона',
+    'city' => 'Город',
+    'area' => 'Районы',
+    'year' => 'год',
+    'aboutMe' => 'Обо мне',
+    'aboutCar' => 'О машине',
+    'site' => 'Сайт',
+    'payByHour' => 'Цена занятия',
+    'payByDistance' => 'Плата за км',
+    'transmission' => [
+        'base' => 'Коробка передач',
+        'auto' => 'Автомат',
+        'mechanic' => 'Механика',
+    ],
+    'gender' => [
+        'base' => 'Пол',
+        'male' => 'Мужской',
+        'female' => 'Женский',
+    ],
+    'instructors' => [
+        'choice' => 'Найти инструктора'
+    ],
+    'auto' => 'Авто',
+    'car_for_study' => 'Машина',
+    'brand' => 'Бренд',
+    'from' => 'От',
+    'to' => 'До',
+    'studentCar' => 'На машине ученика',
+    'yes' => 'Да',
+    'no' => 'Нет',
+    'errors' => [
+        'not_found_posts' => 'Записи не найдены'
+    ],
+    'email' => 'Почтовый ящик',
+    'password' => 'Пароль',
+    'rememberMe' => 'Запомнить меня',
+    'forgotPassword' => 'Забыли пароль',
+    'confirm_password' => 'Подтвердить пароль',
+    'nickname' => 'Логин',
 
 ];

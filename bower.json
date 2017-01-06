@@ -1,0 +1,23 @@
+{
+  "name": "lara",
+  "description": "",
+  "main": "",
+  "license": "ISC",
+  "authors": [
+    "Alex Litvin"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/litalex/trnews",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~4",
+    "font-awesome": "fontawesome#^4.7"
+  }
+}
