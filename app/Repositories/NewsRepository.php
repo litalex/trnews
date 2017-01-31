@@ -4,32 +4,22 @@ namespace Litalex\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
 use Litalex\Models\News;
-use Litalex\Models\Tags;
 
 /**
  * Class NewsRepository
  *
  * @package Litalex\Repositories
  */
-class NewsRepository
+class NewsRepository extends AbstractEloquentRepository
 {
-    /**
-     * The Tag instance.
-     *
-     * @var News
-     */
-    protected $tag;
-
     /**
      * NewsRepository constructor.
      *
      * @param News $news
-     * @param Tags $tag
      */
-    public function __construct(News $news, Tags $tag)
+    public function __construct(News $news)
     {
         $this->model = $news;
-        $this->tag = $tag;
     }
 
     /**
