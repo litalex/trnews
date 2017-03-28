@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 
 /**
  * Class TagsTableSeeder
@@ -15,14 +14,15 @@ class NewsTagsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
-            DB::table('news_tags')->insert(
-                [
-                    'news_id' => random_int(1, 10),
-                    'tags_id' => random_int(1, 10),
-                ]
-            );
+        if (DB::table('news_tags')->get() === null) {
+            foreach (range(1, 10) as $index) {
+                DB::table('news_tags')->insert(
+                    [
+                        'news_id' => random_int(1, 10),
+                        'tags_id' => random_int(1, 10),
+                    ]
+                );
+            }
         }
     }
 }

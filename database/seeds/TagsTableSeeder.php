@@ -14,16 +14,18 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tags')->insert(
-            [
-                'name'        => 'test',
-                'title'       => 'test',
-                'slug'        => 'test',
-                'description' => 'test',
-                'enabled'     => false,
-                'created_at'  => new DateTime(),
-                'updated_at'  => new DateTime(),
-            ]
-        );
+        if (DB::table('tags')->get() === null) {
+            DB::table('tags')->insert(
+                [
+                    'name'        => 'test',
+                    'title'       => 'test',
+                    'slug'        => 'test',
+                    'description' => 'test',
+                    'enabled'     => false,
+                    'created_at'  => new DateTime(),
+                    'updated_at'  => new DateTime(),
+                ]
+            );
+        }
     }
 }

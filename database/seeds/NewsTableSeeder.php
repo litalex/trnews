@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 
 /**
  * Class NewsTableSeeder
@@ -15,6 +14,8 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-        \Illuminate\Support\Facades\Artisan::call('parse:news');
+        if (DB::table('news')->get() === null) {
+            \Illuminate\Support\Facades\Artisan::call('parse:news');
+        }
     }
 }

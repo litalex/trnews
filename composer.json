@@ -5,17 +5,18 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.3.*",
+        "php": ">=7.0",
+        "laravel/framework": "^5.3",
         "laravelcollective/html": "5.3.0",
-        "spatie/laravel-menu": "^2.0"
+        "spatie/laravel-menu": "^2.0",
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "litalex/laradocklex": "dev-hotfix/0.0.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*",
         "barryvdh/laravel-ide-helper": "^2.2"
     },
     "autoload": {
@@ -51,5 +52,11 @@
     },
     "config": {
         "preferred-install": "dist"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:litalex/laradocklex.git"
+        }
+    ]
 }

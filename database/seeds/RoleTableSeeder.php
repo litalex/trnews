@@ -14,30 +14,32 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert(
-            [
-                'id'    => 1,
-                'name'  => 'admin',
-                'title' => 'Admin',
-            ]
-        );
-        DB::table('roles')->insert(
-            [
-                'name'  => 'trainer',
-                'title' => 'Trainer',
-            ]
-        );
-        DB::table('roles')->insert(
-            [
-                'name'  => 'user',
-                'title' => 'User',
-            ]
-        );
-        DB::table('roles')->insert(
-            [
-                'name'  => 'author',
-                'title' => 'Author',
-            ]
-        );
+        if (DB::table('roles')->get() === null) {
+            DB::table('roles')->insert(
+                [
+                    'id'    => 1,
+                    'name'  => 'admin',
+                    'title' => 'Admin',
+                ]
+            );
+            DB::table('roles')->insert(
+                [
+                    'name'  => 'trainer',
+                    'title' => 'Trainer',
+                ]
+            );
+            DB::table('roles')->insert(
+                [
+                    'name'  => 'user',
+                    'title' => 'User',
+                ]
+            );
+            DB::table('roles')->insert(
+                [
+                    'name'  => 'author',
+                    'title' => 'Author',
+                ]
+            );
+        }
     }
 }
