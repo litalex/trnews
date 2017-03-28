@@ -210,8 +210,9 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
 
-
-        'Helpers'   => \Litalex\Helpers\Helpers::class,
+        'Helpers' => \Litalex\Helpers\Helpers::class,
+        'Widget'  => \Litalex\Helpers\Widget::class,
+        'Menu'    => \Litalex\Helpers\MenuGenerator::class,
 
     ],
 

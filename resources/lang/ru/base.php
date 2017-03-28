@@ -14,12 +14,13 @@ return [
     */
 
     'news' => 'Новости',
+    'news-list' => 'Лента новостей',
     'read_more' => 'Подробнее',
-    'home' => 'Главная',
+    'home' => 'Новости футбола',
     'login' => 'Войти',
     'register' => 'Зарегистрироваться',
     'logout' => 'Выйти',
-    'tags' => 'Теги',
+    'tags' => 'Рубрики',
     'trainers' => 'Инструкторы',
     'cars' => 'Авто',
     'driverExperience' => 'Опыт водителя',
@@ -63,5 +64,11 @@ return [
     'forgotPassword' => 'Забыли пароль',
     'confirm_password' => 'Подтвердить пароль',
     'nickname' => 'Логин',
-
+    'source' => 'Источник',
+    'profile' => 'Кабинет',
+    'to-site' => 'На сайт',
+    'author-article' => 'Авторские статьи',
+    'interview' => 'Интервью',
+    'comments' => 'Коментарии',
+    'set_comment' => 'Оставить комментарий',
 ];
