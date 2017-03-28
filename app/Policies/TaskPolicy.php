@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace Litalex\Policies;
 
-use App\User;
-use App\Task;
+use Litalex\Models\User;
+use Litalex\Models\Task;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TaskPolicy

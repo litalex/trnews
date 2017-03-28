@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Litalex\Http\Controllers\Auth;
 
-use App\User;
+use Litalex\Models\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Litalex\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/tasks';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
