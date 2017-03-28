@@ -1,6 +1,6 @@
-.header {
-  margin-bottom: 70px;
-}
+//.header {
+//  margin-bottom: 70px;
+//}
 
 div.choice {
   font-size: 20px;
@@ -13,7 +13,7 @@ div.choice {
   padding-right: 0;
   margin: 20px 0;
   border-radius: 4px;
-  float: right;
+  float: none;
 }
 
 .pagination > li {
@@ -56,13 +56,10 @@ div.choice {
 }
 
 .panel-default {
-  border-color: #b6cef9;
 }
 
 .panel-default > .panel-heading {
   color: #333;
-  background-color: #c8ffe1;
-  border-color: #b6cef9;
 }
 
 h4 {
@@ -110,16 +107,105 @@ legend {
 }
 
 .panel-default > .panel-heading {
-  color: #5a81c3;
   text-align: center;
 }
 
 .panel-heading > h1 {
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
-  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .badge {
   background-color: #ff8e8e;
+}
+
+.panel-heading {
+  padding: 5px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+ul.tags-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tags-list li {
+  padding: 5px;
+  border-bottom: 1px solid #dedede;
+}
+
+.pagination > li.active {
+  background: none;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #1a6bf9;
+}
+
+a.news-link {
+  color: #565656;
+}
+
+.date {
+  font-weight: 100;
+  color: #888;
+  font-size: 0.6em;
+}
+
+.author {
+  color: #1a6bf9;
+  font-weight: 600;
+  font-size: 1.2em;
+  border-bottom: 2px solid #dedede;
+  border-radius: 3px;
+  padding: 12px;
+  background: #f6f6f6;
+}
+
+.media {
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #efefef;
+}
+
+ul.comments-list {
+  padding: 0;
+}
+
+.media-text.text-justify {
+  color: #444;
+  font-size: 1.1em;
+  padding: 0 12px;
+}
+
+.navbar-brand {
+  text-transform: uppercase;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #feffe7;
+  border-color: #ddd;
+}
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+
+#wrapper {
+  background: url("/images/background.jpg") no-repeat;
+  width: 90%;
+  margin: 0 auto;
 }

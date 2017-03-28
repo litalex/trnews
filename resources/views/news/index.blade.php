@@ -2,33 +2,67 @@
 
 @section('content')
     <div class="container">
-        @if (count($news) > 0)
+        <div class="col-lg-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1>{{ trans('base.news') }}</h1>
+                    <h1>{{ trans('base.tags') }}</h1>
                 </div>
                 <div class="panel-body">
-                    @foreach ($news as $item)
-                        <div>
-                            <h4><a href="{{ $item->view_route }}">{{ $item->title }}</a>
-                                <small>{{ $item->updated_at }}</small>
-                                <div>
-                                    @if (count($item->tags) > 0)
-                                        <small class="glyphicon glyphicon-tags">
-                                            @foreach ($item->tags as $tag)
-                                                <a href="{{ $tag->view_route }}">{{ $tag->title }}</a>
-                                            @endforeach
-                                        </small>
-                                    @endif
-                                </div>
-                            </h4>
-                            <div>{{ $item->short_text }}... | <a
-                                        href="{{ $item->view_route }}">{{ trans('base.read_more') }}</a></div>
-                        </div>
-                        <hr>
-                    @endforeach
+                    <ul class="tags-list">
+                        @foreach (\Litalex\Helpers\Widget::tagsList() as $item)
+                            <li>
+                                <a class="tag-link" href="{{ $item->view_route }}">{{ $item->title }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
-        @endif
+        </div>
+        <div class="col-lg-9">
+            @if (count($news) > 0)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <h1>{{ trans('base.news') }}</h1>
+                    </div>
+                    <div class="panel-body">
+                        @foreach ($news as $item)
+                            <div>
+                                <h4><a href="{{ $item->view_route }}">{{ $item->title }}</a>
+                                    <div>
+                                        <small><i class="fa fa-clock-o" aria-hidden="true"></i> {{ Carbon\Carbon::parse($item->updated_at)->formatLocalized('%d %B %H:%m') }}
+                                        </small>
+                                        @if (count($item->tags) > 0)
+                                            <i class="small fa fa-tags" aria-hidden="true"></i>
+                                            @foreach ($item->tags as $tag)
+                                                <a class="small" href="{{ $tag->view_route }}">{{ $tag->title }}</a>
+                                            @endforeach
+                                        @endif
+                                        <small><a target="_blank" href="//{{ $item->source }}"><i
+                                                        class="fa fa-external-link"
+                                                        aria-hidden="true"></i> {{ $item->source }}</a></small>
+                                    </div>
+                                </h4>
+                                <div>{{ $item->description }}... | <a
+                                            href="{{ $item->view_route }}">{{ trans('base.read_more') }}</a></div>
+                            </div>
+                            <hr>
+                        @endforeach
+                        <div class="row text-center">
+                            @if (isset($links))
+                                {!! $links !!}
+                            @endif
+                        </div>
+                    </div>
+                    @endif
+                </div>
+        </div>
+        {{--<div class="col-lg-3">--}}
+            {{--<div class="panel panel-default">--}}
+                {{--<div class="panel-heading">--}}
+                {{--<h1>{{ trans('base.tags') }}</h1>--}}
+                {{--</div>--}}
+                {{--<div class="panel-body"></div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 @endsection

@@ -46,17 +46,41 @@ class TagsRepository
     }
 
     /**
+     * Get all enabled news with tags.
+     *
+     * @return Collection
+     */
+    public function getAllEnabled()
+    {
+        return $this->findByEnabled();
+    }
+
+    /**
      * Get one enabled news by $slug
      *
-     * @param $slug
+     * @param string  $slug
+     * @param integer $limit
      * @return mixed
      */
-    public function getOneEnabledBySlugWithTags($slug)
+    public function getOneEnabledBySlugWithNews(string $slug, int $limit)
     {
-        return $this->findByEnabled()
+        $links = '';
+        $tagAndNews = $this->findByEnabled()
             ->whereSlug($slug)
-            ->with('news')
+            ->with(
+                [
+                    'news' => function ($query) use ($limit, &$links) {
+                        $pagination = $query->paginate($limit);
+                        $links = str_replace('/?', '?', $pagination->render());
+                    },
+                ]
+            )
             ->first();
+
+        return [
+            'tagAndNews' => $tagAndNews,
+            'links' => $links,
+        ];
     }
 
     /**

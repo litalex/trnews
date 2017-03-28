@@ -2,6 +2,7 @@
 
 namespace Litalex\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Redirect;
 use Litalex\Models\User;
 use Validator;
 use Litalex\Http\Controllers\Controller;

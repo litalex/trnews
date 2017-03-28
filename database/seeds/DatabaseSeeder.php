@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CityTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(BrandTableSeeder::class);
+        $this->call(ArticleTableSeeder::class);
+        $this->call(ArticleTagsTableSeeder::class);
     }
 }
