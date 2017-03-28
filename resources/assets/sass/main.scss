@@ -1,3 +1,7 @@
+h1 {
+  margin: 0;
+}
+
 //.header {
 //  margin-bottom: 70px;
 //}
@@ -74,11 +78,11 @@ h3 {
 .btn-primary {
   color: #ffffff;
   background-color: #4186ff;
-  border-color: #b7b7b7;
+  border-color: #f7f7f7;
 }
 
 .btn {
-  border-radius: 20px;
+  //border-radius: 20px;
 }
 
 .btn-primary:hover {
@@ -111,9 +115,10 @@ legend {
 }
 
 .panel-heading > h1 {
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .badge {
@@ -121,7 +126,7 @@ legend {
 }
 
 .panel-heading {
-  padding: 5px;
+  padding: 10px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -161,7 +166,7 @@ a.news-link {
   color: #1a6bf9;
   font-weight: 600;
   font-size: 1.2em;
-  border-bottom: 2px solid #dedede;
+  border-bottom: 1px solid #dedede;
   border-radius: 3px;
   padding: 12px;
   background: #f6f6f6;
@@ -193,7 +198,7 @@ ul.comments-list {
 
 .panel-default > .panel-heading {
   color: #333;
-  background-color: #feffe7;
+  background-color: #f7f7f7;
   border-color: #ddd;
 }
 
@@ -208,4 +213,14 @@ ul.comments-list {
   background: url("/images/background.jpg") no-repeat;
   width: 90%;
   margin: 0 auto;
+}
+
+#app-layout-footer {
+  border-top: 1px solid #ccc;
+  background: #f7f7f7;
+  padding: 20px;
+}
+
+.body-info {
+  border-bottom: 1px solid #dedede;
 }

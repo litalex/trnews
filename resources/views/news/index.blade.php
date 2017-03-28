@@ -22,24 +22,25 @@
             @if (count($news) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                    <h1>{{ trans('base.news') }}</h1>
+                        <h1>{{ trans('base.news') }}</h1>
                     </div>
                     <div class="panel-body">
                         @foreach ($news as $item)
                             <div>
                                 <h4><a href="{{ $item->view_route }}">{{ $item->title }}</a>
                                     <div>
-                                        <small><i class="fa fa-clock-o" aria-hidden="true"></i> {{ Carbon\Carbon::parse($item->updated_at)->formatLocalized('%d %B %H:%m') }}
+                                        <small><i class="fa fa-clock-o"
+                                                  aria-hidden="true"></i> {{ Carbon\Carbon::parse($item->updated_at)->formatLocalized('%d %B %H:%m') }}
                                         </small>
                                         @if (count($item->tags) > 0)
-                                            <i class="small fa fa-tags" aria-hidden="true"></i>
+                                            <i class="small fa fa-tags" aria-hidden="true" title="Теги"></i>
                                             @foreach ($item->tags as $tag)
-                                                <a class="small" href="{{ $tag->view_route }}">{{ $tag->title }}</a>
+                                                <small><a href="{{ $tag->view_route }}">{{ $tag->title }}</a></small>
                                             @endforeach
                                         @endif
-                                        <small><a target="_blank" href="//{{ $item->source }}"><i
-                                                        class="fa fa-external-link"
-                                                        aria-hidden="true"></i> {{ $item->source }}</a></small>
+                                        <i class="small fa fa-external-link" aria-hidden="true" title="Источник"></i>
+                                        <small><a target="_blank" href="//{{ $item->source }}">{{ $item->source }}</a>
+                                        </small>
                                     </div>
                                 </h4>
                                 <div>{{ $item->description }}... | <a
@@ -57,12 +58,12 @@
                 </div>
         </div>
         {{--<div class="col-lg-3">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">--}}
-                {{--<h1>{{ trans('base.tags') }}</h1>--}}
-                {{--</div>--}}
-                {{--<div class="panel-body"></div>--}}
-            {{--</div>--}}
+        {{--<div class="panel panel-default">--}}
+        {{--<div class="panel-heading">--}}
+        {{--<h1>{{ trans('base.tags') }}</h1>--}}
+        {{--</div>--}}
+        {{--<div class="panel-body"></div>--}}
+        {{--</div>--}}
         {{--</div>--}}
     </div>
 @endsection

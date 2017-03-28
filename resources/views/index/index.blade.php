@@ -25,14 +25,14 @@
                         <h1>{{ trans('base.news-list') }}</h1>
                     </div>
                     <div class="panel-body">
-                        @foreach ($news as $item)
-                            <ul class="tags-list">
+                        <ul class="tags-list">
+                            @foreach ($news as $item)
                                 <li><a class="news-link" href="{{ $item->view_route }}">{{ $item->title }}</a></li>
-                            </ul>
-                        @endforeach
-                        <div class="row text-center">
-                            <a class="underline" href="{{ route("news_index") }}">Все новости</a>
-                        </div>
+                            @endforeach
+                            <div class="row text-center">
+                                <li><a class="underline" href="{{ route("news_index") }}">Все новости</a></li>
+                            </div>
+                        </ul>
                     </div>
                     @endif
                 </div>

@@ -30,7 +30,7 @@ class Widget
     public static function articles()
     {
         $ids = [16, 18, 19, 20];
-        return News::whereEnabled(true)->OfTagIds($ids)->limit(5)->get();
+        return News::whereEnabled(true)->OfTagIds($ids)->orderBy('updated_at', 'DESC')->limit(5)->get();
     }
 
     /**
@@ -41,6 +41,6 @@ class Widget
     public static function interviews()
     {
         $ids = [10];
-        return News::whereEnabled(true)->OfTagIds($ids)->limit(5)->get();
+        return News::whereEnabled(true)->OfTagIds($ids)->orderBy('updated_at', 'DESC')->limit(5)->get();
     }
 }

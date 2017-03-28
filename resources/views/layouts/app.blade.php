@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>{{ trans("base.siteName") }}</title>
     <!-- Styles -->
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     <link href="{{ elixir('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
 
+<!-- Header -->
 <div class="header">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -23,7 +24,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> {{ trans('base.home') }}</a>
+                <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-futbol-o"
+                                                                 aria-hidden="true"></i> {{ trans("base.siteName") }}</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -42,8 +44,12 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('user_profile') }}"><i class="fa fa-user" aria-hidden="true"></i> {{ trans('base.profile') }}</a></li>
-                                <li><a href="{{ route('logout') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> {{ trans('base.logout') }}</a></li>
+                                <li><a href="{{ route('user_profile') }}"><i class="fa fa-user"
+                                                                             aria-hidden="true"></i> {{ trans('base.profile') }}
+                                    </a></li>
+                                <li><a href="{{ route('logout') }}"><i class="fa fa-sign-in"
+                                                                       aria-hidden="true"></i> {{ trans('base.logout') }}
+                                    </a></li>
                             </ul>
                         </li>
                     @endif
@@ -55,18 +61,22 @@
     </nav>
 </div>
 
+<!-- Wrapper -->
 <div id="wrapper">@yield('content')</div>
 <!-- Footer -->
-<footer>
+
+<footer id="app-layout-footer">
     <div class="row text-center">
         <span>©</span>
         <span class="ng-binding">{{ date("Y") }}</span>
         <span>-</span>
-        <span class="ng-binding">{{ trans("base.home") }}</span>
+        <span class="ng-binding">{{ trans("base.siteName") }}</span>
     </div>
     <!-- /.row -->
 </footer>
+
 <!-- JavaScripts -->
 <script src="{{ elixir('js/app.js') }}"></script>
+
 </body>
 </html>
