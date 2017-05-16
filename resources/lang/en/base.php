@@ -21,6 +21,6 @@ return [
     'logout' => 'Logout',
     'tags' => 'Tags',
     'trainers' => 'Instructors',
-    'cars' => 'Cars',
-
+    'all_news' => 'All news',
+    'original' => 'Original',
 ];

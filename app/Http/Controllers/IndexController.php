@@ -2,79 +2,78 @@
 
 namespace Litalex\Http\Controllers;
 
+use Litalex\Component\Features\Features;
+use Litalex\Component\Features\FeaturesWidgetData;
+use Litalex\Component\Features\Interfaces\FeaturesInterface;
+use Litalex\Component\TagsList\TagsListWidgetData;
 use Illuminate\Http\Response;
-use Litalex\Models\News;
-use Litalex\Parsers\NewsParser;
-use Litalex\Repositories\CommentRepository;
-use Litalex\Repositories\NewsRepository;
-use Illuminate\Http\Request;
-use Litalex\Repositories\TagsRepository;
+use Litalex\Component\NewsFeed\Interfaces\NewsFeedInterface;
+use Litalex\Component\NewsFeed\NewsFeedWidgetData;
+use Litalex\Component\TagsList\Interfaces\TagsListInterface;
+use Litalex\Component\Widget\Interfaces\WidgetRenderInterface;
 
+/**
+ * Class IndexController.
+ */
 class IndexController extends Controller
 {
     /**
-     * @var NewsRepository
+     * @var NewsFeedInterface
      */
-    protected $news;
-    protected $tags;
-    protected $comments;
+    protected $newsFeed;
 
     /**
-     * @var NewsParser
+     * @var TagsListInterface
      */
-    private $newsParser;
+    protected $tagsList;
+
+    /**
+     * @var Features
+     */
+    private $features;
+
+    /**
+     * @var WidgetRenderInterface
+     */
+    protected $widgetRender;
 
     /**
      * Create a new controller instance.
      *
-     * @param NewsRepository    $news
-     * @param TagsRepository    $tags
-     * @param NewsParser        $newsParser
-     * @param CommentRepository $comments
+     * @param NewsFeedInterface     $newsFeed
+     * @param TagsListInterface     $tagsList
+     * @param FeaturesInterface     $features
+     * @param WidgetRenderInterface $widgetRender
      */
-    public function __construct(NewsRepository $news, TagsRepository $tags, NewsParser $newsParser, CommentRepository $comments)
+    public function __construct(
+        NewsFeedInterface $newsFeed,
+        TagsListInterface $tagsList,
+        FeaturesInterface $features,
+        WidgetRenderInterface $widgetRender
+    )
     {
-        $this->news = $news;
-        $this->tags = $tags;
-        $this->comments = $comments;
-        $this->newsParser = $newsParser;
+        $this->newsFeed = $newsFeed;
+        $this->tagsList = $tagsList;
+        $this->features = $features;
+        $this->widgetRender = $widgetRender;
     }
 
     /**
      * Display a list of all of the news.
      *
-     * @param  Request $request
-     *
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $news = $this->news->getAllEnabledWithTags()->get();
-
-//        $links = str_replace('/?', '?', $news->links());
-
         return view(
             'index.index',
             [
-                'news'  => $news,
-//                'links' => $links,
-            ]
-        );
-    }
-
-    /**
-     * Display one news.
-     *
-     * @param $slug
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function view($slug)
-    {
-        return view(
-            'news.view',
-            [
-                'news' => $this->news->getOneEnabledBySlugWithTags($slug),
+                'newsWidget' => $this->widgetRender->create(
+                    new NewsFeedWidgetData('news.widget.feed', $this->newsFeed->get(20)))->render(),
+                'featuresWidget' => $this->widgetRender->create(
+                    new FeaturesWidgetData('news.widget.features', $this->features->get(4)))->render(),
+                'tagsListWidget' => $this->widgetRender->create(
+                    new TagsListWidgetData('tags.widget.list', $this->tagsList->get()))->render(),
             ]
         );
     }

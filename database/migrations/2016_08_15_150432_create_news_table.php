@@ -18,8 +18,10 @@ class CreateNewsTable extends Migration
             $table->string('name')->unique();
             $table->text('title');
             $table->text('description');
-            $table->string('source');
             $table->longText('text');
+            $table->binary('feature');
+            $table->integer('hits');
+            $table->string('source');
             $table->binary('enabled');
             $table->timestamps();
         });

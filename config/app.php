@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'dev'),
+    'env' => env('APP_ENV', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://laralex.dev:88/'),
+    'news_images_path' => env('APP_NEWS_IMAGES_PATH'),
 
     /*
     |--------------------------------------------------------------------------
@@ -155,6 +156,11 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         /*
+         * Vendor library service provider
+         */
+        Intervention\Image\ImageServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         Litalex\Providers\AppServiceProvider::class,
@@ -162,6 +168,15 @@ return [
         Litalex\Providers\EventServiceProvider::class,
         Litalex\Providers\RouteServiceProvider::class,
 
+        /*
+         * Components Service Provider
+         */
+        \Litalex\Component\NewsFeed\Providers\NewsFeedProvider::class,
+        \Litalex\Component\TagsList\Providers\TagsListProvider::class,
+        \Litalex\Component\Features\Providers\FeaturesProvider::class,
+        \Litalex\Component\Widget\WidgetRenderServiceProvider::class,
+        \Litalex\Component\Parser\Providers\ParserProvider::class,
+        \Litalex\Component\Resource\Providers\ResourceProvider::class,
     ],
 
     /*
@@ -210,8 +225,15 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
 
+        /*
+         * Vendor library
+         */
+        'Image'    => Intervention\Image\Facades\Image::class,
+
+        /*
+         * Own
+         */
         'Helpers' => \Litalex\Helpers\Helpers::class,
-        'Widget'  => \Litalex\Helpers\Widget::class,
         'Menu'    => \Litalex\Helpers\MenuGenerator::class,
 
     ],

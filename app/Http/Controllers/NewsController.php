@@ -3,56 +3,64 @@
 namespace Litalex\Http\Controllers;
 
 use Illuminate\Http\Response;
+use Litalex\Component\TagsList\Interfaces\TagsListInterface;
+use Litalex\Component\TagsList\TagsListWidgetData;
+use Litalex\Component\Widget\Interfaces\WidgetRenderInterface;
 use Litalex\Models\News;
-use Litalex\Parsers\NewsParser;
 use Litalex\Repositories\NewsRepository;
-use Illuminate\Http\Request;
-use Litalex\Repositories\TagsRepository;
 
+/**
+ * Class NewsController.
+ */
 class NewsController extends Controller
 {
     /**
      * @var NewsRepository
      */
     protected $news;
-    protected $tags;
 
     /**
-     * @var NewsParser
+     * @var TagsListInterface
      */
-    private $newsParser;
+    protected $tagsList;
+
+    /**
+     * @var WidgetRenderInterface
+     */
+    protected $widgetRender;
 
     /**
      * Create a new controller instance.
      *
-     * @param NewsRepository $news
-     * @param NewsParser     $newsParser
+     * @param NewsRepository        $news
+     * @param TagsListInterface     $tagsList
+     * @param WidgetRenderInterface $widgetRender
      */
-    public function __construct(NewsRepository $news, TagsRepository $tags, NewsParser $newsParser)
+    public function __construct(NewsRepository $news, TagsListInterface $tagsList, WidgetRenderInterface $widgetRender)
     {
         $this->news = $news;
-        $this->tags = $tags;
-        $this->newsParser = $newsParser;
+        $this->tagsList = $tagsList;
+        $this->widgetRender = $widgetRender;
     }
 
     /**
      * Display a list of all of the news.
      *
-     * @param  Request $request
-     *
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $news = $this->news->getAllEnabledWithTags()->paginate(News::NEWS_PER_PAGE);
+        $news = $this->news->getAllEnabledWithTags(20)->paginate(News::NEWS_PER_PAGE);
 
-        $links = str_replace('/?', '?', $news->render());
+        $pagination = str_replace('/?', '?', $news->render());
 
         return view(
             'news.index',
             [
                 'news'  => $news,
-                'links' => $links,
+                'pagination' => $pagination,
+                'tagsListWidget' => $this->widgetRender->create(
+                    new TagsListWidgetData('tags.widget.list', $this->tagsList->get()))->render(),
             ]
         );
     }
@@ -69,7 +77,9 @@ class NewsController extends Controller
         return view(
             'news.view',
             [
-                'news' => $this->news->getOneEnabledBySlugWithTags($slug),
+                'news' => $this->news->getOneEnabledBySlugWithTags($slug)->first(),
+                'tagsListWidget' => $this->widgetRender->create(
+                    new TagsListWidgetData('tags.widget.list', $this->tagsList->get()))->render(),
             ]
         );
     }

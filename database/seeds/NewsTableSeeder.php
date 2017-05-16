@@ -14,7 +14,7 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::table('news')->get() === null) {
+        if (DB::table('news')->first() === null) {
             \Illuminate\Support\Facades\Artisan::call('parse:news');
         }
     }

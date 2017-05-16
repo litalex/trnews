@@ -15,14 +15,16 @@ class CityTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
-            DB::table('cities')->insert(
-                [
-                    'name'  => $faker->city,
-                    'title' => $faker->city,
-                ]
-            );
+        if (DB::table('cities')->first() === null) {
+            $faker = Faker::create();
+            foreach (range(1, 10) as $index) {
+                DB::table('cities')->insert(
+                    [
+                        'name'  => $faker->city,
+                        'title' => $faker->city,
+                    ]
+                );
+            }
         }
     }
 }

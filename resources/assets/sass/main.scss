@@ -1,5 +1,5 @@
-h1 {
-  margin: 0;
+body {
+  //padding-top: 0;
 }
 
 //.header {
@@ -60,19 +60,6 @@ div.choice {
 }
 
 .panel-default {
-}
-
-.panel-default > .panel-heading {
-  color: #333;
-}
-
-h4 {
-  font-size: 1.3em;
-  color: #5a81c3;
-}
-
-h3 {
-  color: #5a81c3;
 }
 
 .btn-primary {
@@ -152,10 +139,6 @@ ul.tags-list {
   background-color: #1a6bf9;
 }
 
-a.news-link {
-  color: #565656;
-}
-
 .date {
   font-weight: 100;
   color: #888;
@@ -197,22 +180,15 @@ ul.comments-list {
 }
 
 .panel-default > .panel-heading {
-  color: #333;
   background-color: #f7f7f7;
   border-color: #ddd;
 }
 
 .navbar {
-  position: relative;
+  //position: relative;
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-}
-
-#wrapper {
-  background: url("/images/background.jpg") no-repeat;
-  width: 90%;
-  margin: 0 auto;
 }
 
 #app-layout-footer {
@@ -223,4 +199,78 @@ ul.comments-list {
 
 .body-info {
   border-bottom: 1px solid #dedede;
+}
+
+.navbar.navbar-default .navbar-brand {
+  padding: 40px 15px 21px;
+}
+
+#header {
+  margin-bottom: 20px;
+}
+
+#blog, #portfolio, #pricing {
+  padding: 0;
+}
+
+#blog .blog-post {
+  margin-bottom: 10px;
+}
+
+footer {
+  margin-top: 10px;
+}
+
+.form-control {
+  border: 1px solid #eee;
+}
+
+#pricing ul.pricing {
+  margin: 0;
+}
+
+#pricing ul.pricing li.plan-header {
+  padding: 10px;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.panel-default > .panel-heading {
+  color: #64686d;
+}
+
+#pricing ul.pricing li.plan-header .plan-name {
+  text-transform: none;
+}
+
+.news-feed-time{
+  float: left;
+  color: #999;
+  padding: 4px 5px 0 5px;
+}
+
+#pricing ul.pricing li {
+  padding: 5px;
+}
+
+.full-image {
+  width: 400px;
+  float: left;
+  margin: 0 18px 0 0;
+}
+
+.preview-image {
+  width: 170px;
+  float: left;
+  margin: 0 18px 0 0;
+}
+
+.description-block {
+  height: 90px;
+}
+
+.details {
+  margin-top: 10px;
 }

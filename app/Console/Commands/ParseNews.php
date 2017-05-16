@@ -58,6 +58,7 @@ class ParseNews extends Command
         }
 
         $this->comment(PHP_EOL.$message.PHP_EOL);
+
         Log::info(PHP_EOL.$message.PHP_EOL);
     }
 }

@@ -15,9 +15,9 @@ class CreateNewsTagsTable extends Migration
         Schema::create('news_tags', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('news_id')->unsigned()->nullable();
-            $table->foreign('news_id')->references('id')->on('news');
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
             $table->integer('tags_id')->unsigned()->nullable();
-            $table->foreign('tags_id')->references('id')->on('tags');
+            $table->foreign('tags_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 

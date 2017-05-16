@@ -16,8 +16,11 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('title');
-            $table->string('slug')->unique();
             $table->longText('description');
+            $table->binary('feature');
+            $table->integer('hits');
+            $table->binary('top_menu');
+            $table->integer('position');
             $table->binary('enabled');
             $table->timestamps();
         });

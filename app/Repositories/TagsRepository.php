@@ -3,15 +3,19 @@
 namespace Litalex\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
+use Litalex\Component\TagsList\Interfaces\TagsListRepositoryInterface;
 use Litalex\Models\Tags;
 
 /**
- * Class TagsRepository
- *
- * @package Litalex\Repositories
+ * Class TagsRepository.
  */
-class TagsRepository
+class TagsRepository implements TagsListRepositoryInterface
 {
+    /**
+     * @var Tags
+     */
+    private $model;
+
     /**
      * NewsRepository constructor.
      *
@@ -29,8 +33,7 @@ class TagsRepository
      */
     public function getAll()
     {
-        return $this->model
-            ->get();
+        return $this->enabled()->get();
     }
 
     /**
@@ -40,7 +43,7 @@ class TagsRepository
      */
     public function getAllEnabledWithNews()
     {
-        return $this->findByEnabled()
+        return $this->enabled()
             ->with('news')
             ->get();
     }
@@ -52,21 +55,22 @@ class TagsRepository
      */
     public function getAllEnabled()
     {
-        return $this->findByEnabled();
+        return $this
+            ->enabled();
     }
 
     /**
      * Get one enabled news by $slug
      *
-     * @param string  $slug
+     * @param string  $name
      * @param integer $limit
      * @return mixed
      */
-    public function getOneEnabledBySlugWithNews(string $slug, int $limit)
+    public function getOneEnabledBySlugWithNews(string $name, int $limit)
     {
         $links = '';
-        $tagAndNews = $this->findByEnabled()
-            ->whereSlug($slug)
+        $tagAndNews = $this->enabled()
+            ->whereName($name)
             ->with(
                 [
                     'news' => function ($query) use ($limit, &$links) {
@@ -88,7 +92,7 @@ class TagsRepository
      *
      * @return mixed
      */
-    private function findByEnabled()
+    private function enabled()
     {
         return $this->model
             ->whereEnabled(true);
@@ -102,7 +106,25 @@ class TagsRepository
      */
     private function findById($id)
     {
-        return $this->findByEnabled()
+        return $this->enabled()
             ->where('id', $id);
+    }
+
+    /**
+     * Returns tags forList
+     *
+     * @param int $limit
+     *
+     * @return mixed
+     */
+    public function getTagsList(int $limit = 0)
+    {
+        $tags = $this->enabled();
+
+        if ($limit > 0) {
+            return $tags->limit($limit);
+        }
+
+        return $tags->orderBy('position', 'ASC');
     }
 }

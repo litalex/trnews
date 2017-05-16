@@ -72,4 +72,7 @@ return [
     'interview' => 'Интервью',
     'comments' => 'Коментарии',
     'set_comment' => 'Оставить комментарий',
+    'all_news' => 'Все новости',
+    'details' => 'Подробнее',
+    'original' => 'Оригинал'
 ];

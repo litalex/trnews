@@ -21,21 +21,13 @@ class Tags extends Model
     }
 
     /**
-     * Get the user that owns the news.
-     */
-    public function articles()
-    {
-        return $this->belongsToMany(Article::class);
-    }
-
-    /**
-     * Get route for view one tag
+     * Get route for view one news
      *
      * @return mixed
      */
     public function getViewRouteAttribute()
     {
-        return URL::route('view_tag', $this->slug);
+        return URL::route('view_tag', $this->name);
     }
 
     public function scopeOfIds($query, $ids)

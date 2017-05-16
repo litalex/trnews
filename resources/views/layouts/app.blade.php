@@ -7,32 +7,29 @@
     <title>{{ trans("base.siteName") }}</title>
     <!-- Styles -->
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link href="{{ elixir('css/theme.css') }}" rel="stylesheet">
     <link href="{{ elixir('css/main.css') }}" rel="stylesheet">
 </head>
-<body>
+<body id="home" class="homepage">
 
 <!-- Header -->
-<div class="header">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<header id="header">
+    <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-futbol-o"
-                                                                 aria-hidden="true"></i> {{ trans("base.siteName") }}</a>
+                                                                 aria-hidden="true"></i> {{ trans("base.siteName") }}
+                </a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             {{ Menu::generateMainMenu() }}
-            <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">{{ trans("base.login") }}</a></li>
                         <li><a href="{{ url('/register') }}">{{ trans("base.register") }}</a></li>
@@ -55,27 +52,28 @@
                     @endif
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-</div>
+        </div><!--/.container-->
+    </nav><!--/nav-->
+</header><!--/header-->
 
 <!-- Wrapper -->
 <div id="wrapper">@yield('content')</div>
-<!-- Footer -->
 
-<footer id="app-layout-footer">
-    <div class="row text-center">
-        <span>©</span>
-        <span class="ng-binding">{{ date("Y") }}</span>
-        <span>-</span>
-        <span class="ng-binding">{{ trans("base.siteName") }}</span>
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                © {{ date("Y") }} {{ trans("base.siteName") }}. Разработка <a href="/" title="{{ trans("base.siteName") }}">{{ trans("base.siteName") }}</a>
+            </div>
+            <div class="col-sm-6">
+            </div>
+        </div>
     </div>
-    <!-- /.row -->
 </footer>
 
 <!-- JavaScripts -->
+<script src="{{ elixir('js/theme.js') }}"></script>
 <script src="{{ elixir('js/app.js') }}"></script>
 
 </body>

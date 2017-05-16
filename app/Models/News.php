@@ -5,9 +5,12 @@ namespace Litalex\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\URL;
 
+/**
+ * Class model News.
+ */
 class News extends Model
 {
-    const NEWS_PER_PAGE = 20;
+    const NEWS_PER_PAGE = 10;
     const NEWS_PER_NEWS_LIST = 40;
 
     /**
@@ -26,19 +29,17 @@ class News extends Model
         return $this->belongsToMany(Tags::class);
     }
 
+    /**
+     * Get images for news.
+     */
+    public function images()
+    {
+        return $this->belongsToMany(Images::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
-    }
-
-    /**
-     * Get part of text for show in list
-     *
-     * @return string
-     */
-    public function getShortTextAttribute()
-    {
-        return substr($this->text, 1, 150);
     }
 
     /**

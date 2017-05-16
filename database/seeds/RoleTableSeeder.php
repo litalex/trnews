@@ -14,7 +14,7 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::table('roles')->get() === null) {
+        if (DB::table('roles')->first() === null) {
             DB::table('roles')->insert(
                 [
                     'id'    => 1,

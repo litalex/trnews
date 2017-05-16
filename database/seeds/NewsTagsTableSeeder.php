@@ -14,7 +14,7 @@ class NewsTagsTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::table('news_tags')->get() === null) {
+        if (DB::table('news_tags')->first() === null) {
             foreach (range(1, 10) as $index) {
                 DB::table('news_tags')->insert(
                     [

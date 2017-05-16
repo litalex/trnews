@@ -14,7 +14,6 @@ var gulp = require('gulp');
 
 elixir(function (mix) {
     mix
-        .sass('main.scss')
         .styles([
             '../../../bower_components/font-awesome/css/font-awesome.css',
             '../../../bower_components/bootstrap/dist/css/bootstrap.css'
@@ -29,7 +28,6 @@ elixir(function (mix) {
 
 elixir(function (mix) {
     mix
-        .sass('main.scss')
         .styles([
             '../../../bower_components/admin-lte/bootstrap/css/bootstrap.min.css',
             '../../../bower_components/ionicons/css/ionicons.min.css',
@@ -48,4 +46,15 @@ elixir(function (mix) {
             'admin.js'
         ], 'public/js/admin.js')
         .copy('bower_components/admin-lte/bootstrap/fonts', 'public/fonts');
+});
+
+elixir(function (mix) {
+    mix
+        .styles([
+            '../../theme/css/'
+        ], 'public/css/theme.css')
+        .scripts([
+            '../../theme/js/'
+        ], 'public/js/theme.js')
+        .sass('main.scss')
 });
